@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react'
 import './App.css';
+import CustomTable from "./components/CustomTable";
+
+const MOCK = [
+    {name: 'Rocco', gender: 'M', age: 5},
+    {name: 'Akira', gender: 'F', age: 1},
+    {name: 'Bono', gender: 'M', age: 3},
+    {name: 'Mary', gender: 'F', age: 2},
+    {name: 'Pretinha', gender: 'F', age: 3},
+];
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [items, setItems] = useState([]);
+
+    useEffect(() => {
+        setItems(MOCK);
+    }, []);
+
+    return (
+        <div className="App">
+            <header className="App-header">
+                <CustomTable items={items}/>
+            </header>
+        </div>
+    );
 }
 
 export default App;

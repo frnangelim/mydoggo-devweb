@@ -7,14 +7,21 @@ const routes = [
     path: "/login",
     name: "Login",
     component: Login,
-    layout: "main"
+    layout: "unsigned"
   },
   {
     path: "/signup",
     name: "SignUp",
     component: Signup,
+    layout: "unsigned"
+  },
+  {
+    path: "/home",
+    name: "Home",
+    component: App,
     layout: "main"
-  }
+  },
+
 ];
 
 export default routes;

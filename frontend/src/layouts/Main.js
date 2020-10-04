@@ -20,7 +20,7 @@ class Main extends Component {
             if (prop.layout === "main") {
                 return (
                     <Route
-                        path={prop.path}
+                        path={'/app' + prop.path}
                         render={props => (
                             <prop.component
                                 {...props}

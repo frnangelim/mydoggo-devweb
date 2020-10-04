@@ -13,7 +13,7 @@ ReactDOM.render(
     <React.StrictMode>
         <BrowserRouter>
             <Switch>
-                <Route path="/" render={props => <MainLayout {...props} />}/>
+                <Route path="/app" render={props => <MainLayout {...props} />}/>
                 <Route path="/" render={props => <UnsignedLayout {...props} />}/>
                 <Redirect from="/" to="/"/>
             </Switch>

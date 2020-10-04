@@ -24,7 +24,7 @@ class Login extends Component {
         };
         UserRoutes.login(user)
             .then(response => {
-                this.props.history.push('/home');
+                this.props.history.push('/app/home');
             }).catch(error => {
             console.log(error);
             window.alert(error.err);
