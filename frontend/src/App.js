@@ -1,26 +1,25 @@
 import React, { useEffect, useState } from 'react'
 import './App.css';
 import CustomTable from "./components/CustomTable";
-
-const MOCK = [
-    {name: 'Rocco', gender: 'M', age: 5},
-    {name: 'Akira', gender: 'F', age: 1},
-    {name: 'Bono', gender: 'M', age: 3},
-    {name: 'Mary', gender: 'F', age: 2},
-    {name: 'Pretinha', gender: 'F', age: 3},
-];
+import PetRoutes from "./middleware/API/pet/routes";
 
 function App() {
-    const [items, setItems] = useState([]);
+    const [pets, setPets] = useState([]);
 
     useEffect(() => {
-        setItems(MOCK);
+        loadPets();
     }, []);
+
+    async function loadPets() {
+        let response = await PetRoutes.getAll();
+        if (response)
+            setPets(response);
+    };
 
     return (
         <div className="App">
             <header className="App-header">
-                <CustomTable items={items}/>
+                <CustomTable items={pets}/>
             </header>
         </div>
     );

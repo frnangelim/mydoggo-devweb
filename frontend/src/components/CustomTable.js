@@ -14,7 +14,7 @@ const CustomTable = (props) => {
             </thead>
             <tbody>
             {props.items.map((item, index) => {
-                return <tr>
+                return <tr key={index}>
                     <th scope="row">{index + 1}</th>
                     <td>{item.name}</td>
                     <td>{item.gender}</td>

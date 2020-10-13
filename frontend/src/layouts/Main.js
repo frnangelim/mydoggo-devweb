@@ -7,6 +7,8 @@ class Main extends Component {
         super(props);
         this.state = {
         };
+
+        this.mainPanel = React.createRef();
     }
 
     componentDidMount() {
@@ -38,7 +40,7 @@ class Main extends Component {
     render() {
         return (
             <div className="wrapper">
-                <div id="main-panel" className="main-panel" ref="mainPanel">
+                <div id="main-panel" className="main-panel" ref={this.mainPanel}>
                     <Switch>{this.getRoutes(routes)}</Switch>
                 </div>
             </div>
