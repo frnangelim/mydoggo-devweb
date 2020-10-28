@@ -1,117 +1,90 @@
-import React, {Component} from 'react'
+import React, {useState} from 'react'
 
 import * as UserRoutes from '../middleware/API/user/routes'
 import {isEmail, isEmpty} from 'validator';
 import {Button, Input, FormGroup, Form, Row, Col} from 'reactstrap';
 
-class Login extends Component {
+const Login = (props) => {
+    const [email, setEmail] = useState({value: '', isValid: true});
+    const [password, setPassword] = useState({value: '', isValid: true});
+    const [loginFailed, setLoginFailed] = useState(false);
 
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            email: {value: '', isValid: undefined},
-            password: {value: '', isValid: undefined},
-            loginFailed: false
-        }
-    }
-
-    login = (e) => {
+    const login = (e) => {
         e.preventDefault();
         let user = {
-            email: this.state.email.value,
-            password: this.state.password.value
+            email: email.value,
+            password: password.value
         };
+        console.log('TESTE', user);
         UserRoutes.login(user)
             .then(response => {
-                this.props.history.push('/app/home');
+                props.history.push('/app/home');
             }).catch(error => {
             console.log(error);
             window.alert(error.err);
-            this.setState({loginFailed: true})
+            setLoginFailed(true);
         });
     };
 
-    handleAndValidate = (e) => {
+    const handle = (e) => {
         let value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
-        this.setState({[e.target.name]: this.validate(e.target.name, value)}, () => {
-        });
+        console.log('EI', e.target.name);
+        if (e.target.name === 'email')
+            setEmail({value, isValid: true});
+        if (e.target.name === 'password')
+            setPassword({value, isValid: true});
     };
 
-    validate = (name, value) => {
-        let prev = this.state[name];
-        prev.value = value;
-
-        if (typeof prev.value === "string" && isEmpty(prev.value)) {
-            prev.isValid = false;
-        } else {
-            switch (name) {
-                case 'email':
-                    prev.isValid = isEmail(prev.value);
-                    break;
-                case 'password':
-                    prev.isValid = true;
-                    break;
-                default:
-                    prev.isValid = true;
-                    break;
-            }
-        }
-
-        return prev;
+    const redirectToSignup = () => {
+        props.history.push('/signup');
     };
 
-    redirectToSignup = () => {
-        this.props.history.push('/signup');
-    };
-
-    render() {
-        return (
-            <>
-                <div style={{textAlign: 'center', padding: 150}}>
-                    <h1>
+    return (
+        <>
+            <div style={{textAlign: 'center', padding: 150}}>
+                <h1>
+                    Entrar
+                </h1>
+                <Form onSubmit={login} style={{marginTop: 30}}>
+                    <Row>
+                        <Col sm="12">
+                            <FormGroup>
+                                <Input
+                                    id="email"
+                                    name="email"
+                                    placeholder={'Email'}
+                                    value={email.value}
+                                    onChange={handle}
+                                />
+                            </FormGroup>
+                        </Col>
+                        <Col sm="12">
+                            <FormGroup>
+                                <Input
+                                    name="password"
+                                    type="password"
+                                    id="password"
+                                    placeholder={'Senha'}
+                                    value={password.value}
+                                    onChange={handle}
+                                />
+                            </FormGroup>
+                        </Col>
+                    </Row>
+                    <Button
+                        type="submit"
+                        color="primary"
+                    >
                         Entrar
-                    </h1>
-                    <Form onSubmit={this.login} style={{marginTop: 30}}>
-                        <Row>
-                            <Col sm="12">
-                                <FormGroup>
-                                    <Input
-                                        id="email"
-                                        name="email"
-                                        placeholder={'Email'}
-                                        value={this.state.email.value}
-                                        onChange={this.handleAndValidate}
-                                    />
-                                </FormGroup>
-                            </Col>
-                            <Col sm="12">
-                                <FormGroup>
-                                    <Input
-                                        name="password"
-                                        type="password"
-                                        id="password"
-                                        placeholder={'Senha'}
-                                        value={this.state.password.value}
-                                        onChange={this.handleAndValidate}
-                                    />
-                                </FormGroup>
-                            </Col>
-                        </Row>
-                        <Button
-                            type="submit"
-                            color="primary"
-                        >
-                            Entrar
-                        </Button>
-                        <div onClick={this.redirectToSignup}>
-                            <p style={{textAlign: 'center', marginTop: 20, cursor: 'pointer'}}>Ainda não possui uma conta? Registre-se aqui</p>
-                        </div>
-                    </Form>
-                </div>
-            </>
-        );
-    }
+                    </Button>
+                    <div onClick={redirectToSignup}>
+                        <p style={{textAlign: 'center', marginTop: 20, cursor: 'pointer'}}>Ainda não possui uma conta?
+                            Registre-se aqui</p>
+                    </div>
+                </Form>
+            </div>
+        </>
+    );
 }
 
 
