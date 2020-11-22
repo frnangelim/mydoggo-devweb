@@ -13,25 +13,45 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING,
       },
+      location: {
+        allowNull: false,
+        type: Sequelize.STRING,
+      },
       image: {
         type: Sequelize.STRING,
       },
-      age: {
-        type: Sequelize.INTEGER,
+      type: {
+        type: Sequelize.ENUM,
+        values: ['DOG', 'CAT'],
+        allowNull: false
       },
       gender: {
         type: Sequelize.ENUM,
-        values: ['M', 'F']
+        values: ['M', 'F'],
+        allowNull: false
       },
       size: {
         type: Sequelize.ENUM,
-        values: ['P', 'M', 'G']
+        values: ['P', 'M', 'G'],
+        allowNull: false
+      },
+      age: {
+        type: Sequelize.INTEGER,
       },
       description: {
         type: Sequelize.TEXT,
       },
       phone: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      userId: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          key: "id",
+          model: "users",
+        },
       },
       createdAt: {
         allowNull: false,

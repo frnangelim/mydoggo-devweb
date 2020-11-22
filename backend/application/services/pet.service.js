@@ -1,5 +1,5 @@
 // Models
-const { Pet } = require('../models');
+const {Pet} = require('../models');
 
 module.exports = {
 
@@ -7,7 +7,17 @@ module.exports = {
      * Retorna todos os pets
      */
     async getAll(req, res, next) {
-        res.locals.pets = await Pet.findAll({});
+        let {petName, size, specie} = req.query;
+
+        let whereQuery = {};
+        if (petName)
+            whereQuery['name'] = petName;
+        if (size)
+            whereQuery['size'] = size;
+        if (specie)
+            whereQuery['type'] = specie;
+
+        res.locals.pets = await Pet.findAll({where: whereQuery});
         next();
     },
 

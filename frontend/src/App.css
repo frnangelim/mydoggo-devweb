@@ -1,38 +1,223 @@
-.App {
-  text-align: center;
+body {
+    background: #F8F8FA
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Navbar */
+
+/*Navbar*/
+
+/* Add a black background color to the top navigation */
+.topnav {
+    background-color: #333;
+    overflow: hidden;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Style the links inside the navigation bar */
+.topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* Change the color of links on hover */
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
 }
 
-.App-link {
-  color: #61dafb;
+/* Add an active class to highlight the current page */
+.topnav a.active {
+    background-color: #F4AA24;
+    color: white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Hide the link that should open and close the topnav on small screens */
+.topnav .icon {
+    display: none;
+}
+
+.nav-right {
+    position: absolute;
+    right: 0;
+}
+
+/* Home */
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.home-search-area {
+    background-color: #333;
+    padding: 30px 44px 44px;
+    text-align: center;
+    margin-top: -50px;
+    margin-bottom: 60px;
+    z-index: 1;
+    position: relative;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.home-search-area h1 {
+    color: #FFFFFF;
+    opacity: 0.95;
+    letter-spacing: 1px;
+    margin-top: 0;
+}
+
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.pet-list-index {
+    display: table;
+    margin: 0 auto;
+    width: 1102px;
+    margin-bottom: 20px;
+}
+
+pet-list-index li {
+    background-color: #FFFFFF;
+    max-width: 200px;
+    margin: 8px;
+    padding-left: 0;
+    padding-right: 0;
+    vertical-align: top;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    position: relative;
+}
+
+.pet-list-index li .image, .pet-list-index li .image-add {
+    position: relative;
+    width: 200px;
+    height: 200px;
+}
+
+.pet-list-index li .info {
+    padding: 6px 10px 4px 10px;
+}
+
+.pet-list-index li .image img, .pet-list-index li .image-add img {
+    width: 100%;
+    height: 100%;
+    vertical-align: top;
+}
+
+.img-rounded {
+    border-radius: 6px;
+}
+
+.pet-list-index li .info .name {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.pet-list-index li .info p {
+    margin-bottom: 2px;
+}
+
+.pet-list-index li .info .state {
+    font-size: 11px;
+}
+
+.pet-list-index li .info .gender {
+    font-size: 11px;
+}
+
+.pet-list-index li .info .details {
+    display: inline-block;
+    width: 100%;
+}
+
+.pet-list-index li .info .details .active {
+    color: #613488;
+    border-color: #613488;
+}
+
+.pet-list-index li .info .details div {
+    font-size: 13px;
+    border: 1px solid #e4e4e4;
+    color: #e4e4e4;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    float: left;
+    margin: 3px 3px 0 0;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+}
+
+.list-inline {
+    padding-left: 0;
+    list-style: none;
+}
+
+.list-inline > li {
+    display: inline-block;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+a, a:hover {
+    color: #613488;
+}
+
+/*Responsividade */
+
+@media only screen and (min-width: 479px) {
+    .pet-list-index {
+        width: 200px;
+    }
+}
+
+@media only screen and (min-width: 767px) {
+
+    .pet-list-index {
+        width: 420px;
+    }
+}
+
+@media only screen and (min-width: 991px) {
+
+    .pet-list-index {
+        width: 630px;
+    }
+}
+
+@media only screen and (min-width: 1199px) {
+
+    .pet-list-index {
+        width: 850px;
+    }
+}
+
+
+@media only screen and (min-width: 1200px) {
+    .container {
+        width: 1170px
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .container {
+        width: 970px
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .container {
+        width: 750px
+    }
 }

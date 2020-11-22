@@ -5,9 +5,10 @@ import {
 } from '../config';
 
 
-export function getAll() {
+export function getAll({petName = '', specie = '', size = ''}) {
+    let query = `?petName=${petName}&specie=${specie}&size=${size}`;
     return request({
-        url: API_BASE_URL + `/pet`
+        url: API_BASE_URL + `/pet` + query
     });
 }
 

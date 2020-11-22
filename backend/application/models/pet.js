@@ -10,29 +10,42 @@ module.exports = (sequelize, Sequelize) => {
             allowNull: false,
             type: Sequelize.STRING,
         },
+        location: {
+            type: Sequelize.STRING,
+            allowNull: false,
+        },
         image: {
             type: Sequelize.STRING,
         },
         age: {
             type: Sequelize.INTEGER,
         },
+        type: {
+            type: Sequelize.ENUM,
+            values: ['DOG', 'CAT'],
+            allowNull: false
+        },
         gender: {
             type: Sequelize.ENUM,
-            values: ['M', 'F']
+            values: ['M', 'F'],
+            allowNull: false
         },
         size: {
             type: Sequelize.ENUM,
-            values: ['P', 'M', 'G']
+            values: ['P', 'M', 'G'],
+            allowNull: false
         },
         description: {
             type: Sequelize.TEXT,
         },
         phone: {
-            type: Sequelize.STRING
+            type: Sequelize.STRING,
+            allowNull: false
         },
     });
 
     Pet.associate = function (models) {
+        Pet.belongsTo(models.User, {foreignKey: 'userId'});
     };
 
     return Pet;
