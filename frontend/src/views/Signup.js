@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
 import * as UserRoutes from '../middleware/API/user/routes'
-import {isEmail, isEmpty} from 'validator';
 import {toast} from 'react-toastify';
 import {Col, FormGroup, Input, Row, Form, Button} from "reactstrap";
+import Navbar from "../components/Navbar";
 
 const Signup = (props) => {
     const [email, setEmail] = useState({value: '', isValid: true});
@@ -22,7 +22,7 @@ const Signup = (props) => {
             UserRoutes.signup(user)
                 .then(response => {
                     window.alert('Usuário cadastrado com sucesso!');
-                    props.history.push('/login');
+                    props.history.push('/auth/login');
                 }).catch(error => {
                 console.log(error);
                 window.alert(error.err)
@@ -51,11 +51,12 @@ const Signup = (props) => {
     };
 
     const redirectToLogin = () => {
-        props.history.push('/login');
+        props.history.push('/auth/login');
     };
 
     return (
         <>
+            <Navbar active={'signup'}/>
             <div>
                 <div style={{textAlign: 'center', padding: 150}}>
                     <Form onSubmit={signup}>

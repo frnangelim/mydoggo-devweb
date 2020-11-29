@@ -15,7 +15,7 @@ class Unsigned extends Component {
             if (prop.layout === "unsigned") {
                 return (
                     <Route
-                        path={prop.path}
+                        path={'/auth' + prop.path}
                         render={props => (
                             <prop.component
                                 {...props}

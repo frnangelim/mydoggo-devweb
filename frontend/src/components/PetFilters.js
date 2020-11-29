@@ -63,7 +63,7 @@ const PetFilters = (props) => {
                                 name="petName"
                                 type="text"
                                 placeholder="Nome do animal"
-                                value={null}
+                                value={''}
                                 onChange={(e) => {
                                     setPetName(e.target.value)
                                 }}

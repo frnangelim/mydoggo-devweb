@@ -3,6 +3,7 @@ import React, {useState} from 'react'
 import * as UserRoutes from '../middleware/API/user/routes'
 import {isEmail, isEmpty} from 'validator';
 import {Button, Input, FormGroup, Form, Row, Col} from 'reactstrap';
+import Navbar from "../components/Navbar";
 
 const Login = (props) => {
     const [email, setEmail] = useState({value: '', isValid: true});
@@ -15,9 +16,10 @@ const Login = (props) => {
             email: email.value,
             password: password.value
         };
-        console.log('TESTE', user);
         UserRoutes.login(user)
             .then(response => {
+                console.log('TESTE', response);
+                localStorage.setItem('USER', JSON.stringify(response));
                 props.history.push('/app/home');
             }).catch(error => {
             console.log(error);
@@ -28,7 +30,6 @@ const Login = (props) => {
 
     const handle = (e) => {
         let value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
-        console.log('EI', e.target.name);
         if (e.target.name === 'email')
             setEmail({value, isValid: true});
         if (e.target.name === 'password')
@@ -41,6 +42,7 @@ const Login = (props) => {
 
     return (
         <>
+            <Navbar active={'login'}/>
             <div style={{textAlign: 'center', padding: 150}}>
                 <h1>
                     Entrar

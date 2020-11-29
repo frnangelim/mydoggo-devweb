@@ -41,7 +41,7 @@ function App() {
 
     return (
         <div>
-            <Navbar/>
+            <Navbar active={'home'}/>
 
             <img alt="Banner do site" src={Banner} style={{width: '100%', height: 300, objectFit: 'cover'}}/>
             <div className="container">

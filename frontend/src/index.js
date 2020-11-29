@@ -14,7 +14,7 @@ ReactDOM.render(
         <BrowserRouter>
             <Switch>
                 <Route path="/app" render={props => <MainLayout {...props} />}/>
-                <Route path="/" render={props => <UnsignedLayout {...props} />}/>
+                <Route path="/auth" render={props => <UnsignedLayout {...props} />}/>
                 <Redirect from="/" to="/app/home"/>
             </Switch>
         </BrowserRouter>
