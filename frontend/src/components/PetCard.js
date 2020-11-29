@@ -4,7 +4,7 @@ const PetCard = (props) => {
     const pet = props.pet;
     return (
         <li>
-            <a href="/TODO">
+            <a href={`/app/pet/${pet.id}`}>
                 <div className="image">
                     <img alt="Foto do pet" className="img-rounded" src={pet.image}/>
                 </div>

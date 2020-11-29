@@ -12,6 +12,13 @@ export function getAll({petName = '', specie = '', size = ''}) {
     });
 }
 
+export function getOne(petId) {
+    return request({
+        url: API_BASE_URL + `/pet/${petId}`
+    });
+}
+
 export default {
-    getAll
+    getAll,
+    getOne
 }

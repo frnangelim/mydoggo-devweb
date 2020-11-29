@@ -1,6 +1,7 @@
 import App from "./App";
 import Login from '../src/views/Login';
 import Signup from '../src/views/Signup';
+import PetPage from '../src/views/PetPage';
 
 const routes = [
   {
@@ -19,6 +20,12 @@ const routes = [
     path: "/home",
     name: "Home",
     component: App,
+    layout: "main"
+  },
+  {
+    path: "/pet/:id",
+    name: "Pet",
+    component: PetPage,
     layout: "main"
   },
 
