@@ -1,5 +1,5 @@
 // Models
-const {Pet} = require('../models');
+const {Pet, User} = require('../models');
 
 module.exports = {
 
@@ -18,6 +18,14 @@ module.exports = {
             whereQuery['type'] = specie;
 
         res.locals.pets = await Pet.findAll({where: whereQuery});
+        next();
+    },
+
+    /**
+     * Retorna um pet específico
+     */
+    async getOne(req, res, next) {
+        res.locals.pet = await Pet.findByPk(req.params.id, {include: [{model: User}]});
         next();
     },
 
