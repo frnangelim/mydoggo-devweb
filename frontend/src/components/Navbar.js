@@ -21,6 +21,8 @@ const Navbar = (props) => {
     return (
         <div className="topnav">
             <a className={props.active === 'home' ? 'active' : null} href="/app/home">Home</a>
+            <a className={props.active === 'newPet' ? 'active' : null} href="/app/pet/new">Cadastrar PET</a>
+
             {!loading &&
             <div className="nav-right">
                 {user && Object.keys(user).length > 0 ?

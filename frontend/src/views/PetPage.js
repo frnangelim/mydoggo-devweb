@@ -5,6 +5,7 @@ import Navbar from "./../components/Navbar";
 import {Spinner, Col} from 'reactstrap';
 
 import PetRoutes from "./../middleware/API/pet/routes";
+import DefaultPhoto from "../assets/img/defaultpet.png";
 
 function PetPage(props) {
     const [pet, setPet] = useState({});
@@ -35,7 +36,10 @@ function PetPage(props) {
                                 marginLeft: 'auto',
                                 marginRight: 'auto'
                             }}>
-                                <img alt="Foto do pet" className="img-rounded" src={pet.image}/>
+                                <img onError={(e) => {
+                                    e.target.onerror = null;
+                                    e.target.src = DefaultPhoto
+                                }} alt="Foto do pet" className="img-rounded" src={pet.image}/>
                             </div>
                             <div className="info">
                                 <p className="gender"
@@ -74,7 +78,7 @@ function PetPage(props) {
                             <span style={{color: '#fff', fontSize: 14}}><span style={{
                                 fontWeight: 'bold',
                                 color: '#fff'
-                            }}>Telefone:</span> {pet.User.phone ? pet.User.phone : 'Não informado'}</span>
+                            }}>Telefone para contato:</span> {pet.User.phone ? pet.User.phone : 'Não informado'}</span>
                         </div>
                     </Col>
                 </>

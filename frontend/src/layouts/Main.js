@@ -11,12 +11,6 @@ class Main extends Component {
         this.mainPanel = React.createRef();
     }
 
-    componentDidMount() {
-        // !isAuthenticated {
-        //     this.props.history.push('/login');
-        // }
-    }
-
     getRoutes = routes => {
         return routes.map((prop, key) => {
             if (prop.layout === "main") {

@@ -1,4 +1,5 @@
 import React from 'react';
+import DefaultPhoto from '../assets/img/defaultpet.png'
 
 const PetCard = (props) => {
     const pet = props.pet;
@@ -6,7 +7,10 @@ const PetCard = (props) => {
         <li>
             <a href={`/app/pet/${pet.id}`}>
                 <div className="image">
-                    <img alt="Foto do pet" className="img-rounded" src={pet.image}/>
+                    <img onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = DefaultPhoto
+                    }} alt="Foto do pet" className="img-rounded" src={pet.image}/>
                 </div>
                 <div className="info">
                     <p className="name">{pet.name}</p>

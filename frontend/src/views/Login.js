@@ -43,7 +43,7 @@ const Login = (props) => {
     return (
         <>
             <Navbar active={'login'}/>
-            <div style={{textAlign: 'center', padding: 150}}>
+            <Col sm={6} style={{textAlign: 'center', padding: 150, marginLeft: 'auto', marginRight: 'auto'}}>
                 <h1>
                     Entrar
                 </h1>
@@ -84,7 +84,7 @@ const Login = (props) => {
                             Registre-se aqui</p>
                     </div>
                 </Form>
-            </div>
+            </Col>
         </>
     );
 }

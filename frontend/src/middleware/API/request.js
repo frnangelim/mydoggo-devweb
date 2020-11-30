@@ -1,12 +1,17 @@
 export const request = (options) => {
-    if(!options.headers){
-        options.headers = new Headers({
-            'Access-Control-Allow-Origin': '*',
-            'Content-Type': 'application/json'
-        });
-    }
+    let headers = {
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json',
+    };
 
     // TODO auth
+    let user = JSON.parse(localStorage.getItem('USER'));
+    console.log('XXX', user);
+    if (user && user.jwt) {
+        headers["Authorization"] = `${user.jwt}`;
+    }
+
+    options.headers = new Headers(headers);
 
     return new Promise((resolve, reject) => {
         fetch(options.url, options).then(resp => {

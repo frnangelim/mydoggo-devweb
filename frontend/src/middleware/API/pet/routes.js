@@ -18,7 +18,16 @@ export function getOne(petId) {
     });
 }
 
+export function create(body) {
+    return request({
+        url: API_BASE_URL + `/pet`,
+        body: JSON.stringify(body),
+        method: 'POST'
+    });
+}
+
 export default {
     getAll,
-    getOne
+    getOne,
+    create
 }

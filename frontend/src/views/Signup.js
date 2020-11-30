@@ -9,7 +9,7 @@ const Signup = (props) => {
     const [password, setPassword] = useState({value: '', isValid: true});
     const [confirmPassword, setConfirmPassword] = useState({value: '', isValid: true});
     const [name, setName] = useState({value: '', isValid: true});
-    const [errMsg, setErrMsg] = useState('');
+    const [phone, setPhone] = useState({value: '', isValid: true});
 
     const signup = (e) => {
         e.preventDefault();
@@ -35,7 +35,7 @@ const Signup = (props) => {
     };
 
     const isSubmitValid = () => {
-        return email.value && password.value && confirmPassword.value;
+        return email.value.trim() && password.value.trim() && confirmPassword.value.trim() && phone.value.trim();
     };
 
     const handle = (e) => {
@@ -48,6 +48,9 @@ const Signup = (props) => {
             setConfirmPassword({value, isValid: true});
         if (e.target.name === 'name')
             setName({value, isValid: true});
+        if (e.target.name === 'phone') {
+            setPhone({value, isValid: true})
+        }
     };
 
     const redirectToLogin = () => {
@@ -57,72 +60,81 @@ const Signup = (props) => {
     return (
         <>
             <Navbar active={'signup'}/>
-            <div>
-                <div style={{textAlign: 'center', padding: 150}}>
-                    <Form onSubmit={signup}>
-                        <h1>Registre-se</h1>
-                        <Row style={{marginTop: 30}}>
-                            <Col sm="6">
-                                <FormGroup>
-                                    <Input
-                                        id="email"
-                                        name="email"
-                                        placeholder="Email"
-                                        value={email.value}
-                                        onChange={handle}
-                                    />
-                                </FormGroup>
-                            </Col>
-                            <Col sm="6">
-                                <FormGroup>
-                                    <Input
-                                        name="name"
-                                        id="name"
-                                        placeholder="Nome completo"
-                                        value={name.value}
-                                        onChange={handle}
-                                    />
-                                </FormGroup>
-                            </Col>
-                            <Col sm="12">
-                                <FormGroup>
-                                    <Input
-                                        name="password"
-                                        type="password"
-                                        id="password"
-                                        placeholder="Senha"
-                                        value={password.value}
-                                        onChange={handle}
-                                    />
-                                </FormGroup>
-                            </Col>
-                            <Col sm="12">
-                                <FormGroup>
-                                    <Input
-                                        name="confirmPassword"
-                                        type="password"
-                                        id="password"
-                                        placeholder="Repita a senha"
-                                        value={confirmPassword.value}
-                                        onChange={handle}
-                                    />
-                                </FormGroup>
-                            </Col>
-                        </Row>
-                        <Button
-                            type="submit"
-                            color="primary"
-                        >
-                            Registrar
-                        </Button>
+            <Col sm={6} style={{textAlign: 'center', paddingTop: 150, marginLeft: 'auto', marginRight: 'auto'}}>
+                <Form onSubmit={signup}>
+                    <h1>Registre-se</h1>
+                    <Row style={{marginTop: 30}}>
+                        <Col sm="6">
+                            <FormGroup>
+                                <Input
+                                    id="email"
+                                    name="email"
+                                    placeholder="Email"
+                                    value={email.value}
+                                    onChange={handle}
+                                />
+                            </FormGroup>
+                        </Col>
+                        <Col sm="6">
+                            <FormGroup>
+                                <Input
+                                    name="name"
+                                    id="name"
+                                    placeholder="Nome completo"
+                                    value={name.value}
+                                    onChange={handle}
+                                />
+                            </FormGroup>
+                        </Col>
+                        <Col sm="12">
+                            <FormGroup>
+                                <Input
+                                    name="phone"
+                                    type="number"
+                                    placeholder="Telefone para contato"
+                                    value={phone.value}
+                                    onChange={handle}
+                                />
+                            </FormGroup>
+                        </Col>
+                        <Col sm="12">
+                            <FormGroup>
+                                <Input
+                                    name="password"
+                                    type="password"
+                                    id="password"
+                                    placeholder="Senha"
+                                    value={password.value}
+                                    onChange={handle}
+                                />
+                            </FormGroup>
+                        </Col>
+                        <Col sm="12">
+                            <FormGroup>
+                                <Input
+                                    name="confirmPassword"
+                                    type="password"
+                                    id="password"
+                                    placeholder="Repita a senha"
+                                    value={confirmPassword.value}
+                                    onChange={handle}
+                                />
+                            </FormGroup>
+                        </Col>
+                    </Row>
+                    <Button
+                        type="submit"
+                        color="primary"
+                    >
+                        Registrar
+                    </Button>
 
-                        <div onClick={redirectToLogin}>
-                            <p style={{textAlign: 'center', marginTop: 20, cursor: 'pointer'}}>Já possui uma conta? Faça
-                                o login.</p>
-                        </div>
-                    </Form>
-                </div>
-            </div>
+                    <div onClick={redirectToLogin}>
+                        <p style={{textAlign: 'center', marginTop: 20, cursor: 'pointer'}}>Já possui uma conta? Faça
+                            o login.</p>
+                    </div>
+                </Form>
+            </Col>
         </>
     );
 }
