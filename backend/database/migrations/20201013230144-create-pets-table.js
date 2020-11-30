@@ -41,10 +41,6 @@ module.exports = {
       description: {
         type: Sequelize.TEXT,
       },
-      phone: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
       userId: {
         allowNull: false,
         type: Sequelize.INTEGER,

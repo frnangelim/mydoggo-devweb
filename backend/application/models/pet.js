@@ -38,10 +38,6 @@ module.exports = (sequelize, Sequelize) => {
         description: {
             type: Sequelize.TEXT,
         },
-        phone: {
-            type: Sequelize.STRING,
-            allowNull: false
-        },
     });
 
     Pet.associate = function (models) {

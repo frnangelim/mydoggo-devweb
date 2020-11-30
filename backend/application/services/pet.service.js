@@ -29,4 +29,13 @@ module.exports = {
         next();
     },
 
+    /**
+     * Cria um novo pet
+     */
+    async create(req, res, next) {
+        req.body.userId = req.user.id;
+        res.locals.pet = await Pet.create(req.body);
+        next();
+    },
+
 };

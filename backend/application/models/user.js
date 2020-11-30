@@ -9,6 +9,7 @@ module.exports = (sequelize, Sequelize) => {
         name: Sequelize.STRING,
         email: Sequelize.STRING,
         password: Sequelize.STRING,
+        phone: Sequelize.STRING,
     });
 
     User.associate = function (models) {

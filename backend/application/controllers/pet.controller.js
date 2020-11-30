@@ -19,4 +19,13 @@ module.exports = {
             RestService.internalError(res, error);
         }
     },
+
+    async create(req, res) {
+        try {
+            const pet = res.locals.pet;
+            RestService.ok(res, pet);
+        } catch (error) {
+            RestService.internalError(res, error);
+        }
+    },
 }
